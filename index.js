@@ -12,6 +12,9 @@ server.listen(3000, () => {
 });
 
 io.on('connection', (socket) => {
-  console.log(`Connected ${socket}`)
+  console.log("User connected")
+  socket.on('on-chat', data => {
+    io.emit('user-chat', data)
+  })
 });
 
